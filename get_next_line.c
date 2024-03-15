@@ -6,7 +6,7 @@
 /*   By: jakim <jakim@student.42gyeongsan.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/15 20:50:35 by jakim             #+#    #+#             */
-/*   Updated: 2024/03/15 20:51:38 by jakim            ###   ########.fr       */
+/*   Updated: 2024/03/15 22:54:04 by jakim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,5 +14,7 @@
 
 char    *get_next_line(int fd)
 {
+    static unsigned int count;
+
     
 }
