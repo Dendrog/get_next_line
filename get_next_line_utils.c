@@ -6,7 +6,105 @@
 /*   By: jakim <jakim@student.42gyeongsan.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/15 20:50:20 by jakim             #+#    #+#             */
-/*   Updated: 2024/03/15 22:54:07 by jakim            ###   ########.fr       */
+/*   Updated: 2024/03/18 00:29:17 by jakim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "get_next_line.h"
+
+size_t	ft_strlen(const char *s)
+{
+	char	*str;
+	int		i;
+
+	i = 0;
+	str = (char *)s;
+	while (*str)
+	{
+		i++;
+		str++;
+	}
+	return (i);
+}
+
+char	*ft_substr(char const *s, unsigned int start, size_t len)
+{
+	char	*mem;
+	char	*ptr;
+
+	if (!s)
+		return (NULL);
+	mem = (char *)malloc(sizeof(char) * (len + 1));
+	if (mem == NULL)
+		return (NULL);
+	if (start >= ft_strlen(s))
+	{
+		*mem = 0;
+		return (mem);
+	}
+	len = len + start;
+	ptr = mem;
+	while (start < len)
+	{
+		*ptr = s[start];
+		if (*ptr == 0)
+			return (mem);
+		ptr++;
+		start++;
+	}
+	*ptr = 0;
+	return (mem);
+}
+
+int	ft_strchr(const char *s, int c)
+{
+	int	i;
+
+	i = 0;
+	while (1)
+	{
+		if ((unsigned char)s[i] == (unsigned char)c)
+			return (i);
+		i++;
+		if (!s[i])
+			return (i);
+	}
+}
+
+char	*ft_strdup(const char *s, int len)
+{
+	char	*mem;
+	char	*ptr;
+	char	*f;
+
+	mem = NULL;
+	mem = (char *)malloc(sizeof(char) * (len + 1));
+	if (mem == NULL)
+		return (mem);
+	if (!s)
+		return (mem);
+	f = (char *)s;
+	ptr = mem;
+	while (*s)
+		*(ptr++) = *(char *)(s++);
+	*ptr = 0;
+	free(f);
+	return (mem);
+}
+
+char	*ft_strncat(char *s1, char *s2, int n)
+{
+	int	l1;
+	int	l2;
+
+	l1 = ft_strlen(s1);
+	l2 = 0;
+
+	while (s2[l2] && l2 < n)
+	{
+		s1[l1 + l2] = s2[l2];
+		l2++;
+	}
+	s1[l1 + l2] = 0;
+	return (s1); 
+}
