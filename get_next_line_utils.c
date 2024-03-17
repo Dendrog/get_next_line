@@ -6,7 +6,7 @@
 /*   By: jakim <jakim@student.42gyeongsan.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/15 20:50:20 by jakim             #+#    #+#             */
-/*   Updated: 2024/03/18 00:29:17 by jakim            ###   ########.fr       */
+/*   Updated: 2024/03/18 00:35:23 by jakim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,7 +82,10 @@ char	*ft_strdup(const char *s, int len)
 	if (mem == NULL)
 		return (mem);
 	if (!s)
+	{
+		mem[0] = 0;
 		return (mem);
+	}
 	f = (char *)s;
 	ptr = mem;
 	while (*s)

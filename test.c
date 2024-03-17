@@ -11,5 +11,14 @@ int main()
 	a = get_next_line(fd);
 	printf("%s",a);
 	free(a);
-	
+	a = get_next_line(fd);
+	printf("%s",a);
+	free(a);
+	a = get_next_line(fd);
+	printf("%s",a);
+	free(a);
+	a = get_next_line(fd);
+	printf("%s",a);
+	free(a);
+	close(fd);
 }
