@@ -1,20 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.c                                    :+:      :+:    :+:   */
+/*   get_next_line_bonus.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jakim <jakim@student.42gyeongsan.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/15 20:50:35 by jakim             #+#    #+#             */
-/*   Updated: 2024/03/19 01:11:01 by jakim            ###   ########.fr       */
+/*   Updated: 2024/03/19 02:03:23 by jakim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "get_next_line_bonus.h"
 
 char    *get_next_line(int fd)
 {
-    static char *save;
+    static t_list	*save;
     char                *ptr;
     char                *pre;
 	int					tmp;
@@ -24,30 +24,32 @@ char    *get_next_line(int fd)
 	if (BUFFER_SIZE <= 0 || fd < 0)
 		return (NULL);
 	size = BUFFER_SIZE;
+	while(ft_lstsize(save) < (fd + 1))
+		ft_lstadd_back(&save, ft_lstnew());
 	pre = (char *)malloc(sizeof(char) * (BUFFER_SIZE + 1));
     while(1)
     {
-		ptr = ft_strdup(ptr, size);
-		if (save)
+		ptr = ft_strdup(ptr, size); 
+		if (ft_lstindex(save, fd)->content)
 		{
-			tmp = ft_strchr(save, '\n');
-			ft_strncat(ptr, save, tmp + 1);
-			if (tmp < (int)ft_strlen(save))
+			tmp = ft_strchr(ft_lstindex(save, fd)->content, '\n');
+			ft_strncat(ptr, ft_lstindex(save, fd)->content, tmp + 1);
+			if (tmp < (int)ft_strlen(ft_lstindex(save, fd)->content))
 			{
 				free(pre);
-				pre = save;
-				save = ft_substr(pre, tmp + 1, BUFFER_SIZE);
+				pre = ft_lstindex(save, fd)->content;
+				ft_lstindex(save, fd)->content = ft_substr(pre, tmp + 1, BUFFER_SIZE);
 				free(pre);
 				break ;
 			}
 			//ft_strncat(ptr, save, size);
 			size += BUFFER_SIZE;
 			ptr = ft_strdup(ptr, size);
-			free(save);
-			save = NULL;
+			free(ft_lstindex(save, fd)->content);
+			ft_lstindex(save, fd)->content = NULL;
 		}
         tmp = read(fd, pre, BUFFER_SIZE);
-		if (!*ptr && !save && tmp <= 0)
+		if (!*ptr && !ft_lstindex(save, fd)->content && tmp <= 0)
 		{
 			free(pre);
 			free(ptr);
@@ -58,7 +60,7 @@ char    *get_next_line(int fd)
 		ft_strncat(ptr, pre, tmp + 1);
 		if (tmp < BUFFER_SIZE)
 		{
-			save = ft_substr(pre, tmp + 1, BUFFER_SIZE);
+			ft_lstindex(save, fd)->content = ft_substr(pre, tmp + 1, BUFFER_SIZE);
 			free(pre);
 			break ;
 		}

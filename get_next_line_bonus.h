@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.h                                    :+:      :+:    :+:   */
+/*   get_next_line_bonus.h                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jakim <jakim@student.42gyeongsan.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/15 20:50:40 by jakim             #+#    #+#             */
-/*   Updated: 2024/03/19 01:16:38 by jakim            ###   ########.fr       */
+/*   Updated: 2024/03/19 02:03:11 by jakim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,11 +20,21 @@
 #  define BUFFER_SIZE 10
 # endif
 
+typedef struct s_list
+{
+	char			*content;
+	struct s_list	*next;
+}	t_list;
+
 size_t	ft_strlen(const char *s);
 char	*ft_substr(char const *s, unsigned int start, size_t len);
 int	ft_strchr(const char *s, int c);
 char	*ft_strdup(const char *s, int len);
 char	*ft_strncat(char *s1, char *s2, int n);
 char    *get_next_line(int fd);
+t_list	*ft_lstindex(t_list *lst, int i);
+t_list	*ft_lstnew();
+void	ft_lstadd_back(t_list **lst, t_list *new);
+int	ft_lstsize(t_list *lst);
 
 #endif
