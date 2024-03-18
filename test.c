@@ -7,18 +7,12 @@ int main()
 {
     char *a;
     int fd;
-    fd = open("./txt.txt",O_RDONLY);
-	a = get_next_line(fd);
-	printf("%s",a);
-	free(a);
-	a = get_next_line(fd);
-	//printf("%s",a);
-	free(a);
-	a = get_next_line(fd);
-	//printf("%s",a);
-	free(a);
-	a = get_next_line(fd);
-	printf("%s",a);
-	free(a);
+    fd = open("./t2.txt",O_RDONLY);
+	//printf("%d",fd);
+	//for(int i =0; i<1; i++){
+		a = get_next_line(fd);
+		printf("%s",a);
+		free(a);
+	//}
 	close(fd);
 }
