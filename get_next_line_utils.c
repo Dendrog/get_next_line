@@ -6,7 +6,7 @@
 /*   By: jakim <jakim@student.42gyeongsan.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/15 20:50:20 by jakim             #+#    #+#             */
-/*   Updated: 2024/03/18 00:35:23 by jakim            ###   ########.fr       */
+/*   Updated: 2024/03/18 18:46:00 by jakim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,7 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 		start++;
 	}
 	*ptr = 0;
+	//free(s);
 	return (mem);
 }
 
@@ -65,9 +66,9 @@ int	ft_strchr(const char *s, int c)
 	{
 		if ((unsigned char)s[i] == (unsigned char)c)
 			return (i);
-		i++;
 		if (!s[i])
 			return (i);
+		i++;
 	}
 }
 

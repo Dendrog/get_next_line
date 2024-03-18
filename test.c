@@ -12,10 +12,10 @@ int main()
 	printf("%s",a);
 	free(a);
 	a = get_next_line(fd);
-	printf("%s",a);
+	//printf("%s",a);
 	free(a);
 	a = get_next_line(fd);
-	printf("%s",a);
+	//printf("%s",a);
 	free(a);
 	a = get_next_line(fd);
 	printf("%s",a);

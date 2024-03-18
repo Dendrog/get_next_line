@@ -6,7 +6,7 @@
 /*   By: jakim <jakim@student.42gyeongsan.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/15 20:50:35 by jakim             #+#    #+#             */
-/*   Updated: 2024/03/18 00:43:09 by jakim            ###   ########.fr       */
+/*   Updated: 2024/03/18 18:44:24 by jakim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,14 +28,24 @@ char    *get_next_line(int fd)
 		ptr = ft_strdup(ptr, size);
 		if (save)
 		{
-			ft_strncat(ptr, save, size);
+			tmp = ft_strchr(save, '\n');
+			ft_strncat(ptr, save, tmp + 1);
+			if (tmp < ft_strlen(save))
+			{
+				free(pre);
+				pre = save;
+				save = ft_substr(pre, tmp + 1, BUFFER_SIZE);
+				free(pre);
+				break ;
+			}
+			//ft_strncat(ptr, save, size);
 			size += BUFFER_SIZE;
 			ptr = ft_strdup(ptr, size);
 			free(save);
 			save = 0;
 		}
         tmp = read(fd, pre, BUFFER_SIZE);
-		//if (tmp < BUFFER_SIZE) //버퍼 ㅈㄴ 크면 문제 
+		//if (tmp < BUFFER_SIZE)
 		pre[tmp] = 0;
 		tmp = ft_strchr(pre, '\n');
 		ft_strncat(ptr, pre, tmp + 1);
