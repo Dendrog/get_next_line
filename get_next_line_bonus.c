@@ -6,7 +6,7 @@
 /*   By: jakim <jakim@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/15 20:50:35 by jakim             #+#    #+#             */
-/*   Updated: 2024/03/19 21:01:46 by jakim            ###   ########.fr       */
+/*   Updated: 2024/03/19 21:13:43 by jakim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -119,12 +119,11 @@ char	*get_next_line(int fd)
 	if (BUFFER_SIZE <= 0 || fd < 0)
 		return (NULL);
 	while (ft_lstindex(save, &size, 0) && size < (fd + 1))
-	{
 		ft_lstadd_back(&save);
-		ft_lstindex(save, &size, 0);
-	}
 	size = BUFFER_SIZE;
 	pre = (char *)malloc(sizeof(char) * (BUFFER_SIZE + 1));
+	if (!pre)
+		return (NULL);
 	while (1)
 	{
 		ptr = ft_strdup(ptr, size);

@@ -6,7 +6,7 @@
 /*   By: jakim <jakim@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/15 20:50:35 by jakim             #+#    #+#             */
-/*   Updated: 2024/03/19 19:27:40 by jakim            ###   ########.fr       */
+/*   Updated: 2024/03/19 21:07:35 by jakim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,6 +72,8 @@ char	*get_next_line(int fd)
 		return (NULL);
 	size = BUFFER_SIZE;
 	pre = (char *)malloc(sizeof(char) * (BUFFER_SIZE + 1));
+	if (!pre)
+		return (NULL);
 	while (1)
 	{
 		ptr = ft_strdup(ptr, size);
