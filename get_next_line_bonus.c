@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line_bonus.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jakim <jakim@student.42.fr>                +#+  +:+       +#+        */
+/*   By: jakim <jakim@student.42gyeongsan.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/15 20:50:35 by jakim             #+#    #+#             */
-/*   Updated: 2024/03/19 21:13:43 by jakim            ###   ########.fr       */
+/*   Updated: 2024/03/20 01:08:58 by jakim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,30 +37,33 @@ void	ft_lstadd_back(t_list **lst)
 
 t_list	*ft_lstindex(t_list *lst, int *i, int version)
 {
+	int	k;
+
 	if (!lst)
 		return (NULL);
 	if (version)
 	{
-		while (lst->next && (*i) > 0)
+		k = (*i);
+		while (lst->next && k > 0)
 		{
 			lst = lst->next;
-			(*i)--;
+			k--;
 		}
 		return (lst);
 	}
 	else
 	{
-		i = 0;
+		(*i) = 0;
 		while (lst)
 		{
 			lst = lst->next;
 			(*i)++;
 		}
-		return (lst);
+		return (0);
 	}
 }
 
-int	check_save(char	**save, char **ptr, char **pre, int *size)
+int	ch_save(char	**save, char **ptr, char **pre, int *size)
 {
 	int	tmp;
 
@@ -118,7 +121,8 @@ char	*get_next_line(int fd)
 	ptr = 0;
 	if (BUFFER_SIZE <= 0 || fd < 0)
 		return (NULL);
-	while (ft_lstindex(save, &size, 0) && size < (fd + 1))
+	size = 0;
+	while (size++ < (fd + 1))
 		ft_lstadd_back(&save);
 	size = BUFFER_SIZE;
 	pre = (char *)malloc(sizeof(char) * (BUFFER_SIZE + 1));
@@ -127,9 +131,9 @@ char	*get_next_line(int fd)
 	while (1)
 	{
 		ptr = ft_strdup(ptr, size);
-		if (check_save(&(ft_lstindex(save, fd, 1)->content), &ptr, &pre, &size))
+		if (ch_save(&(ft_lstindex(save, &fd, 1)->content), &ptr, &pre, &size))
 			break ;
-		if (make_string(&(ft_lstindex(save, fd, 1)->content), &ptr, &pre, fd))
+		if (make_string(&(ft_lstindex(save, &fd, 1)->content), &ptr, &pre, fd))
 			break ;
 		size += BUFFER_SIZE;
 	}
