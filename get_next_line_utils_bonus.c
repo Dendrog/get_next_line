@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line_utils_bonus.c                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jakim <jakim@student.42gyeongsan.kr>       +#+  +:+       +#+        */
+/*   By: jakim <jakim@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/15 20:50:20 by jakim             #+#    #+#             */
-/*   Updated: 2024/03/19 02:05:38 by jakim            ###   ########.fr       */
+/*   Updated: 2024/03/19 21:02:33 by jakim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,6 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 		start++;
 	}
 	*ptr = 0;
-	//free(s);
 	return (mem);
 }
 
@@ -103,68 +102,11 @@ char	*ft_strncat(char *s1, char *s2, int n)
 
 	l1 = ft_strlen(s1);
 	l2 = 0;
-
 	while (s2[l2] && l2 < n)
 	{
 		s1[l1 + l2] = s2[l2];
 		l2++;
 	}
 	s1[l1 + l2] = 0;
-	return (s1); 
-}
-
-int	ft_lstsize(t_list *lst)
-{
-	int	i;
-
-	i = 0;
-	while (lst)
-	{
-		lst = lst->next;
-		i++;
-	}
-	return (i);
-}
-
-void	ft_lstadd_back(t_list **lst, t_list *new)
-{
-	t_list	*ptr;
-
-	if (!lst || !new)
-		return ;
-	if (!(*lst))
-	{
-		*lst = new;
-		new->next = NULL;
-		return ;
-	}
-	ptr = *lst;
-	while (ptr->next)
-		ptr = ptr->next;
-	new->next = NULL;
-	ptr->next = new;
-}
-
-t_list	*ft_lstnew()
-{
-	t_list	*ptr;
-
-	ptr = (t_list *)malloc(sizeof(t_list));
-	if (!ptr)
-		return (NULL);
-	ptr->content = 0;
-	ptr->next = NULL;
-	return (ptr);
-}
-
-t_list	*ft_lstindex(t_list *lst, int i)
-{
-	if (!lst)
-		return (NULL);
-	while (lst->next && i > 0)
-	{
-		lst = lst->next;
-		i--;
-	}
-	return (lst);
+	return (s1);
 }

@@ -3,15 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line_bonus.h                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jakim <jakim@student.42gyeongsan.kr>       +#+  +:+       +#+        */
+/*   By: jakim <jakim@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/15 20:50:40 by jakim             #+#    #+#             */
-/*   Updated: 2024/03/19 02:03:11 by jakim            ###   ########.fr       */
+/*   Updated: 2024/03/19 20:59:25 by jakim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef GET_NEXT_LINE_H
-# define GET_NEXT_LINE_H
+#ifndef GET_NEXT_LINE_BONUS_H
+# define GET_NEXT_LINE_BONUS_H
 
 # include <stdlib.h>
 # include <unistd.h>
@@ -28,13 +28,11 @@ typedef struct s_list
 
 size_t	ft_strlen(const char *s);
 char	*ft_substr(char const *s, unsigned int start, size_t len);
-int	ft_strchr(const char *s, int c);
+int		ft_strchr(const char *s, int c);
 char	*ft_strdup(const char *s, int len);
 char	*ft_strncat(char *s1, char *s2, int n);
-char    *get_next_line(int fd);
-t_list	*ft_lstindex(t_list *lst, int i);
-t_list	*ft_lstnew();
-void	ft_lstadd_back(t_list **lst, t_list *new);
-int	ft_lstsize(t_list *lst);
+char	*get_next_line(int fd);
+t_list	*ft_lstindex(t_list *lst, int *i, int version);
+void	ft_lstadd_back(t_list **lst);
 
 #endif
