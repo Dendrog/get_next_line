@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line_utils.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jakim <jakim@student.42gyeongsan.kr>       +#+  +:+       +#+        */
+/*   By: jakim <jakim@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/15 20:50:20 by jakim             #+#    #+#             */
-/*   Updated: 2024/03/19 01:11:09 by jakim            ###   ########.fr       */
+/*   Updated: 2024/03/19 19:29:29 by jakim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,6 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 		start++;
 	}
 	*ptr = 0;
-	//free(s);
 	return (mem);
 }
 
@@ -103,12 +102,11 @@ char	*ft_strncat(char *s1, char *s2, int n)
 
 	l1 = ft_strlen(s1);
 	l2 = 0;
-
 	while (s2[l2] && l2 < n)
 	{
 		s1[l1 + l2] = s2[l2];
 		l2++;
 	}
 	s1[l1 + l2] = 0;
-	return (s1); 
+	return (s1);
 }

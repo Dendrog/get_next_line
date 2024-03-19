@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line_bonus.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jakim <jakim@student.42gyeongsan.kr>       +#+  +:+       +#+        */
+/*   By: jakim <jakim@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/15 20:50:35 by jakim             #+#    #+#             */
-/*   Updated: 2024/03/19 02:03:23 by jakim            ###   ########.fr       */
+/*   Updated: 2024/03/19 13:45:43 by jakim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,6 @@ char    *get_next_line(int fd)
 				free(pre);
 				break ;
 			}
-			//ft_strncat(ptr, save, size);
 			size += BUFFER_SIZE;
 			ptr = ft_strdup(ptr, size);
 			free(ft_lstindex(save, fd)->content);
